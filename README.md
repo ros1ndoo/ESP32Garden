@@ -12,14 +12,13 @@ Para replicar este proyecto en el entorno físico, se requieren los siguientes c
 * **Sensor de Temperatura y Humedad Ambiente:** DHT11.
 * **Sensor de Humedad del Suelo:** Sensor capacitivo o resistivo analógico.
 * **Sensor de Lluvia / Gotas:** Módulo detector analógico.
-* **Carcasa Física:** Estructura protectora diseñada e impresa en 3D para albergar la electrónica de forma segura.
 
 ## 💻 Tecnologías y Software
 
 * **Firmware (C++ / Arduino):** Lectura analógica/digital de sensores y servidor web asíncrono para exponer una API REST (formato JSON).
-* **Ingesta de Datos (Python):** Peticiones HTTP (`requests`), transformación de datos y almacenamiento histórico mediante `pandas`.
-* **Visualización Web (Python):** Aplicación interactiva construida con `streamlit` y visualizaciones gráficas avanzadas con `plotly`.
-* **Orquestación (Python):** Interfaz gráfica de usuario (GUI) desarrollada con `tkinter` para la gestión unificada de los microservicios.
+* **Ingesta de Datos:** Peticiones HTTP (`requests`), transformación de datos y almacenamiento histórico mediante `pandas`.
+* **Visualización Web:** Aplicación interactiva construida con `streamlit` y visualizaciones gráficas avanzadas con `plotly`.
+* **Orquestación:** Interfaz gráfica de usuario (GUI) desarrollada con `tkinter` para la gestión unificada de los microservicios.
 
 ## 📂 Estructura del Proyecto
 
@@ -33,7 +32,7 @@ El repositorio está organizado en los siguientes módulos principales:
 * `dashboard.py`: Aplicación analítica web orientada a la toma de decisiones.
 * `requirements.txt`: Dependencias del entorno de Python.
 
-## 🚀 Guía de Instalación y Despliegue
+##Guía de Instalación y Despliegue
 
 ### 1. Despliegue del Hardware (ESP32)
 1. Conecta los sensores a los pines correspondientes del ESP32 definidos en el código fuente.
