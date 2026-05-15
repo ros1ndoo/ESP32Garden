@@ -5,7 +5,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-// Importamos nuestras credenciales secretas
 #include "credenciales.h"
 
 #define ANCHO_PANTALLA 128
@@ -18,13 +17,13 @@ DHT dht(DHTPIN, DHTTYPE);
 
 WebServer server(80);
 
-const int pinHumedadSuelo = 32;
-const int pinLluvia = 33;
+const int pinHumedadSuelo = 32; 
+const int pinLluvia = 33;       
 
-const int SUELO_SECO = 2500;   
-const int SUELO_MOJADO = 300;  
-const int LLUVIA_SECO = 700;   
-const int LLUVIA_MOJADO = 150; 
+const int SUELO_SECO = 4095;   
+const int SUELO_MOJADO = 1500;  
+const int LLUVIA_SECO = 4095;   
+const int LLUVIA_MOJADO = 1200; 
 
 float temperatura = 0, humedadAmb = 0;
 int porcSuelo = 0, porcLluvia = 0;
@@ -69,7 +68,6 @@ void setup() {
   display.println("Conectando Wi-Fi...");
   display.display();
 
-  // Usamos las variables definidas en tu archivo credenciales.h
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   
   while (WiFi.status() != WL_CONNECTED) {
@@ -95,6 +93,9 @@ void loop() {
     humedadAmb = dht.readHumidity();
     int sRaw = analogRead(pinHumedadSuelo);
     int lRaw = analogRead(pinLluvia);
+
+    Serial.print("RAW Suelo: "); Serial.print(sRaw);
+    Serial.print(" | RAW Lluvia: "); Serial.println(lRaw);
 
     porcSuelo = constrain(map(sRaw, SUELO_SECO, SUELO_MOJADO, 0, 100), 0, 100);
     porcLluvia = constrain(map(lRaw, LLUVIA_SECO, LLUVIA_MOJADO, 0, 100), 0, 100);
